@@ -1,10 +1,10 @@
 import InputCondition from '../../../components/organism/Form/InputCondition'
 import metaDataPengajuan from '../Data/MetaDataPengajuan'
 import Template from './Template'
+import formLaporan from '../Data/FormLaporan.json'
 
 const Laporan = () => {
-  const { handleChange, handleError, data, formLaporan, dataError } =
-    metaDataPengajuan()
+  const { handleChange, handleError, data, dataError } = metaDataPengajuan()
 
   return (
     <Template>

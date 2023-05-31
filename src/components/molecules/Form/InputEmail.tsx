@@ -70,7 +70,7 @@ const InputEmail: FC<EmailInputProps> = (props) => {
       <div
         className={cn(
           'flex flex-col gap-[2px] w-full',
-          caption || errorMessage.length > 0 ? ' mt-[5px]' : ''
+          caption || errorMessage?.length > 0 ? ' mt-[5px]' : ''
         )}
       >
         {caption && (

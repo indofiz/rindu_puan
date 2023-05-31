@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className='relative py-3 flex items-center justify-center'>
       <div className='absolute left-4'>
-        <BackButton />
+        <BackButton onClick={() => null} />
       </div>
       <div className=''>
         <Link to='/' relative='path'>

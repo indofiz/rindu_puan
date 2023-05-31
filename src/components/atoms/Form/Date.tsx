@@ -14,6 +14,7 @@ interface InputDateProps {
   stop?: number
   withPortal?: boolean
   format?: string
+  placeholder?: string
   onChange: (param: dataChange) => void
 }
 
@@ -41,9 +42,10 @@ const DatePick: FC<InputDateProps> = (props) => {
     stop = new Date().getFullYear() + 1,
     format,
     id,
-    withPortal = false
+    withPortal = false,
+    placeholder
   } = props
-  const [startDate, setStartDate] = useState<Date>(new Date())
+  const [startDate, setStartDate] = useState<Date | null>(null)
 
   const handleChange = (date: Date) => {
     setStartDate(date)
@@ -145,6 +147,7 @@ const DatePick: FC<InputDateProps> = (props) => {
   return (
     <div className='relative w-full'>
       <DatePicker
+        autoComplete='off'
         id={id}
         disabled={false}
         dateFormat={format}
@@ -153,6 +156,7 @@ const DatePick: FC<InputDateProps> = (props) => {
         selected={startDate}
         onChange={handleChange}
         withPortal={withPortal}
+        placeholderText={placeholder}
       />
 
       <div className='w-11 absolute top-0 bottom-0 right-0 m-auto flex items-center justify-center z-10'>

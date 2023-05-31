@@ -27,7 +27,7 @@ interface ConditionProps {
 const InputCondition: FC<ConditionProps> = (props) => {
   const { item, data, onChange, handleError, tabIndex, errorMessage } = props
   //https://dev.to/devsmitra/react-best-practices-and-patterns-to-reduce-code-part-2-54f3
-  console.log(item)
+  // console.log(item)
   // TEXT
   if (item.type === 'text') {
     return (

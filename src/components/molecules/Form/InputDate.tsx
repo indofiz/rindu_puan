@@ -15,6 +15,7 @@ export interface DateInputProps extends VariantProps<typeof inputVariant> {
   className?: string
   withPortal?: boolean
   format?: string
+  placeholder?: string
   errorMessage?: any
   onChange: (param: dataChange) => void
   handleError?: (param: dataError) => void

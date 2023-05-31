@@ -1,0 +1,38 @@
+[
+  {
+    "id": "nama_pelapor",
+    "type": "text",
+    "label": "Nama Pelapor :",
+    "placeholder": "Masukan nama pelapor"
+  },
+  {
+    "id": "tgl_pelaporan",
+    "type": "date",
+    "label": "Tanggal Pelaporan :",
+    "placeholder": "dd-mm-yyyy",
+    "withPortal": true,
+    "format": "dd-mm-yyyy",
+    "start": 2000
+  },
+  {
+    "id": "tgl_kejadian",
+    "type": "date",
+    "placeholder": "dd-mm-yyyy",
+    "label": "Tanggal Kejadian :",
+    "withPortal": true,
+    "format": "dd-mm-yyyy",
+    "start": 2000
+  },
+  {
+    "id": "deskripsi_kronologi",
+    "type": "textarea",
+    "label": "Deskripsi Kronologi Kejadian:",
+    "placeholder": "Masukan deskripsi kronologi"
+  },
+  {
+    "id": "alamat_lengkap",
+    "type": "textarea",
+    "label": "Alamat lengkap:",
+    "placeholder": "Masukan alamat lengkap"
+  }
+]

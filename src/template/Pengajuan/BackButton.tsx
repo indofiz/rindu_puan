@@ -1,6 +1,13 @@
-const BackButton = () => {
+interface BackButton {
+  onClick: () => void
+}
+
+const BackButton: React.FC<BackButton> = ({ onClick }) => {
   return (
-    <button className='p-2 bg-white rounded-md border border-gray-200 shadow-sm focus:bg-cream'>
+    <button
+      onClick={onClick}
+      className='p-2 bg-white rounded-md border border-gray-200 shadow-sm focus:bg-cream'
+    >
       <svg
         xmlns='http://www.w3.org/2000/svg'
         width={24}

@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const inputVariant = cva(
-  'py-2 px-3 border shadow-sm w-full rounded-md focus:outline-none focus:ring-1 placeholder:text-gray-400 placeholder:text-sm',
+  'py-2 px-3 border w-full rounded-md focus:outline-none focus:ring-1 placeholder:text-gray-400 placeholder:text-sm',
   {
     variants: {
       state: {
@@ -29,7 +29,7 @@ export const inputVariant = cva(
       },
       sizes: {
         small: ['py-[6px]', 'px-3'],
-        medium: ['py-2', 'px-3'],
+        medium: ['py-[9px]', 'px-3'],
         large: ['py-3', 'px-4', 'placeholder:text-base']
       }
     },

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "nama_lengkap",
+    "type": "text",
+    "label": "Nama Lengkap :",
+    "placeholder": "Masukan nama pelapor"
+  },
+  {
+    "id": "nik",
+    "type": "number",
+    "label": "NIK Ktp :",
+    "placeholder": "Masukan NIK"
+  },
+  {
+    "id": "tempat_lahir",
+    "type": "text",
+    "label": "Tempat Lahir :",
+    "placeholder": "Masukan tempat lahir"
+  },
+  {
+    "id": "tgl_lahir",
+    "type": "date",
+    "label": "Tanggal Lahir :",
+    "placeholder": "dd-mm-yyyy",
+    "withPortal": true,
+    "format": "dd-mm-yyyy",
+    "start": 2000
+  },
+  {
+    "id": "tgl_kejadian",
+    "type": "date",
+    "placeholder": "dd-mm-yyyy",
+    "label": "Tanggal Kejadian :",
+    "withPortal": true,
+    "format": "dd-mm-yyyy",
+    "start": 2000
+  },
+  {
+    "id": "alamat_lengkap_korban",
+    "type": "textarea",
+    "label": "Alamat lengkap Korban:",
+    "placeholder": "Masukan alamat lengkap"
+  },
+  {
+    "id": "jenis_kelamin",
+    "type": "radio_group",
+    "label": "Jenis Kelamin:",
+    "list_radio": [
+      { "id": "pria", "value": "pria", "label": "Pria" },
+      { "id": "wanita", "value": "wanita", "label": "Wanita" }
+    ]
+  },
+  {
+    "id": "no_telpon",
+    "type": "number",
+    "label": "Nomor Handphone :",
+    "placeholder": "Masukan Nomor Handphone"
+  },
+  {
+    "id": "pekerjaan",
+    "type": "text",
+    "label": "Pekerjaan:",
+    "placeholder": "Masukan Pekerjaan"
+  },
+  {
+    "id": "status_perkawinan",
+    "type": "radio_group",
+    "label": "Status Perkawinan?",
+    "list_radio": [
+      { "id": "menikah", "value": "menikah", "label": "Menikah" },
+      { "id": "cerai", "value": "cerai", "label": "Cerai" }
+    ]
+  },
+  {
+    "id": "apakah_difabel",
+    "type": "radio_group",
+    "label": "Apakah difabel?",
+    "list_radio": [
+      { "id": "ya", "value": "ya", "label": "Ya" },
+      { "id": "tidak", "value": "tidak", "label": "Tidak" }
+    ]
+  },
+  {
+    "id": "tindak_kekerasan_dialami",
+    "type": "textarea",
+    "label": "Tindak kekerasan yang dialami:",
+    "placeholder": "Tindak kekerasan yang dialami"
+  }
+]

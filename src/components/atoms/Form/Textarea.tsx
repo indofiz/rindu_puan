@@ -24,8 +24,8 @@ const Textarea: FC<TextareaProps> = (props) => {
       <textarea
         className={cn(className, 'scrollbar-none')}
         id={props.id}
-        rows={1}
-        style={{ height: 40 }}
+        rows={3}
+        style={{ height: 100 }}
         placeholder={props.placeholder}
         ref={textAreaRef}
         value={props.value}

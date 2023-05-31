@@ -1,12 +1,18 @@
 import Button from '../../components/atoms/Button'
+import Korban from './Content/Korban'
 import Laporan from './Content/Laporan'
+import Pelaku from './Content/Pelaku'
 import Stepper from './Stepper'
 import Controller from './Stepper/Controller'
 import MainContent from './Stepper/MainContent'
 import Meta from './Stepper/Meta'
 import Numbering from './Stepper/Numbering'
+import { isLaporan } from '../../recoil/pengajuan'
+import { useRecoilValue } from 'recoil'
 
 const StepperPengajuan = () => {
+  const isLaporanTrue = useRecoilValue(isLaporan)
+
   const steps = {
     laporan: {
       title: 'Laporan',
@@ -18,13 +24,13 @@ const StepperPengajuan = () => {
       title: 'Data Korban',
       description:
         'Isi formulir berikut ini dengan data yang valid, guna mempermudah petugas dalam melakukan perlindungan.',
-      content: <>a</>
+      content: <Korban />
     },
     pelaku: {
       title: 'Data Pelaku',
       description:
         'Isi formulir berikut ini dengan data yang valid, guna mempermudah petugas dalam melakukan perlindungan.',
-      content: <>a</>
+      content: <Pelaku />
     },
     done: {
       title: 'Selesai',
@@ -50,11 +56,13 @@ const StepperPengajuan = () => {
               isVisible={true}
             >
               <>
-                <Button
-                  className='w-full'
-                  onClick={nextStep}
-                  label='Selanjutnya'
-                />
+                {!isLaporanTrue && (
+                  <Button
+                    className='w-full'
+                    onClick={nextStep}
+                    label='Selanjutnya'
+                  />
+                )}
                 <Button
                   variant='secondary'
                   className='w-full'

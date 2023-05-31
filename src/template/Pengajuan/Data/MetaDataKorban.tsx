@@ -3,10 +3,10 @@ import {
   dataError
 } from '../../../components/organism/Form/utils/param'
 import { useRecoilState } from 'recoil'
-import { dataLaporan, dataErrorField } from '../../../recoil/pengajuan'
+import { dataErrorField, dataSementaraKorban } from '../../../recoil/pengajuan'
 
-const metaDataPengajuan = () => {
-  const [data, setData] = useRecoilState<any>(dataLaporan)
+const metaDataKorban = () => {
+  const [data, setData] = useRecoilState<any>(dataSementaraKorban)
   const [dataError, setDataError] = useRecoilState<any>(dataErrorField)
 
   const handleChange = (param: dataChange) => {
@@ -20,4 +20,4 @@ const metaDataPengajuan = () => {
   return { data, dataError, handleChange, handleError }
 }
 
-export default metaDataPengajuan
+export default metaDataKorban

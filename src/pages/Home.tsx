@@ -9,8 +9,8 @@ import Tentang from '../template/Home/Tentang'
 
 const Home = () => {
   return (
-    <div className='bg-cream'>
-      <div className='max-w-lg bg-background mx-auto'>
+    <div className='bg-cream md:min-h-screen'>
+      <div className='max-w-lg bg-background mx-auto md:min-h-screen'>
         <BottomNavBar />
         <Navbar />
         <Hero />

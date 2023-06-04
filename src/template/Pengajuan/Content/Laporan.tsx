@@ -1,15 +1,17 @@
-import InputCondition from '../../../components/organism/Form/InputCondition'
-import metaDataPengajuan from '../Data/MetaDataPengajuan'
-import Template from './Template'
-import formLaporan from '../Data/FormLaporan.json'
+import InputCondition from "../../../components/organism/Form/InputCondition";
+import metaDataPengajuan from "../Data/MetaDataPengajuan";
+import Template from "./Template";
+import { useRecoilValue } from "recoil";
+import { laporanForm } from "../../../recoil/stepper";
 
 const Laporan = () => {
-  const { handleChange, handleError, data, dataError } = metaDataPengajuan()
+  const { handleChange, handleError, data, dataError } = metaDataPengajuan();
+  const { listFormLaporan } = useRecoilValue(laporanForm);
 
   return (
     <Template>
-      <div className='w-full flex flex-col gap-3'>
-        {formLaporan.map((item: any, index: number) => (
+      <div className="w-full flex flex-col gap-3">
+        {listFormLaporan.map((item: any, index: number) => (
           <InputCondition
             tabIndex={index}
             key={item.id}
@@ -22,7 +24,7 @@ const Laporan = () => {
         ))}
       </div>
     </Template>
-  )
-}
+  );
+};
 
-export default Laporan
+export default Laporan;

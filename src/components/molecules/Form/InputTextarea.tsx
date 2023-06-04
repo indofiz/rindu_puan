@@ -1,33 +1,33 @@
-import { FC } from 'react'
-import Label from '../../atoms/Form/Label'
-import { VariantProps } from 'class-variance-authority'
-import { cn } from '../../../utils/classMerge'
-import Message from '../../atoms/Form/Message'
-import { inputVariant } from './utils/variant'
-import Textarea, { TextareaProps } from '../../atoms/Form/Textarea'
+import { FC } from "react";
+import Label from "../../atoms/Form/Label";
+import { VariantProps } from "class-variance-authority";
+import { cn } from "../../../utils/classMerge";
+import Message from "../../atoms/Form/Message";
+import { inputVariant } from "./utils/variant";
+import Textarea, { TextareaProps } from "../../atoms/Form/Textarea";
 
 interface TextAreaInputProps
   extends TextareaProps,
     VariantProps<typeof inputVariant> {
-  label: string
-  caption?: string
-  errorMessage?: any
+  label: string;
+  caption?: string;
+  errorMessage?: any;
 }
 
 const InputTextarea: FC<TextAreaInputProps> = (props) => {
   const {
-    id = '',
+    id = "",
     label,
     className,
-    state = 'normal',
+    state = "normal",
     sizes,
     caption,
-    errorMessage
-  } = props
+    errorMessage,
+  } = props;
 
   return (
-    <div className='flex flex-col w-full'>
-      <Label id={id} label={label} />
+    <div className="flex flex-col w-full">
+      <Label id={id} label={label} required={props.required} />
 
       <Textarea
         id={id}
@@ -38,12 +38,12 @@ const InputTextarea: FC<TextAreaInputProps> = (props) => {
       />
       <div
         className={cn(
-          'flex flex-col gap-[2px] w-full',
-          caption || errorMessage?.length ? ' mt-[5px]' : ''
+          "flex flex-col gap-[2px] w-full",
+          caption || errorMessage?.length ? " mt-[5px]" : ""
         )}
       >
         {caption && (
-          <Message message={caption} className='text-xs text-gray-500' />
+          <Message message={caption} className="text-xs text-gray-500" />
         )}
 
         {errorMessage &&
@@ -54,7 +54,7 @@ const InputTextarea: FC<TextAreaInputProps> = (props) => {
           )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InputTextarea
+export default InputTextarea;

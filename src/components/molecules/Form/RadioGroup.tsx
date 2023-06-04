@@ -1,16 +1,16 @@
-import { FC } from 'react'
-import Radio, { RadioProps } from '../../atoms/Form/Radio'
-import Label from '../../atoms/Form/Label'
-import { cn } from '../../../utils/classMerge'
-import { radioVariant } from './utils/variant'
-import Message from '../../atoms/Form/Message'
+import { FC } from "react";
+import Radio, { RadioProps } from "../../atoms/Form/Radio";
+import Label from "../../atoms/Form/Label";
+import { cn } from "../../../utils/classMerge";
+import { radioVariant } from "./utils/variant";
+import Message from "../../atoms/Form/Message";
 
 interface RadioGroup extends RadioProps {
-  message?: []
-  list_radio?: {}[] | undefined
-  label: string
-  caption?: string
-  errorMessage?: any
+  message?: [];
+  list_radio?: {}[] | undefined;
+  label: string;
+  caption?: string;
+  errorMessage?: any;
 }
 
 const RadioGroup: FC<RadioGroup> = (props) => {
@@ -23,11 +23,11 @@ const RadioGroup: FC<RadioGroup> = (props) => {
     caption,
     className,
     ...rest
-  } = props
+  } = props;
   return (
-    <div className='flex flex-col gap-1'>
-      <Label id={id} label={label} />
-      <div className='grid grid-cols-2 gap-2' id={id}>
+    <div className="flex flex-col gap-1">
+      <Label id={id} label={label} required={props.required} />
+      <div className="grid grid-cols-2 gap-2" id={id}>
         {list_radio &&
           list_radio.map((item: any) => (
             <div
@@ -51,12 +51,12 @@ const RadioGroup: FC<RadioGroup> = (props) => {
       </div>
       <div
         className={cn(
-          'flex flex-col gap-[2px] w-full',
-          caption || errorMessage?.length ? ' mt-[5px]' : ''
+          "flex flex-col gap-[2px] w-full",
+          caption || errorMessage?.length ? " mt-[5px]" : ""
         )}
       >
         {caption && (
-          <Message message={caption} className='text-xs text-gray-500' />
+          <Message message={caption} className="text-xs text-gray-500" />
         )}
 
         {errorMessage &&
@@ -67,7 +67,7 @@ const RadioGroup: FC<RadioGroup> = (props) => {
           )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RadioGroup
+export default RadioGroup;

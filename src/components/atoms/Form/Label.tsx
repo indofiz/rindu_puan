@@ -1,26 +1,35 @@
-import cx from 'classnames'
+import cx from "classnames";
 
 interface LabelProps {
-  id: string | undefined
-  label: string
-  size?: 'small' | 'medium' | 'large' | string
+  id: string | undefined;
+  label: string;
+  size?: "small" | "medium" | "large" | string;
+  required?: boolean;
 }
 
-const Label: React.FC<LabelProps> = ({ label, id, size = 'medium' }) => {
+const Label: React.FC<LabelProps> = ({
+  label,
+  id,
+  size = "medium",
+  required = true,
+}) => {
   const className = cx(
-    { 'text-sm': size === 'small' },
-    { 'text-base': size === 'medium' },
-    { 'text-lg': size === 'large' },
-    'mb-1',
-    'font-medium',
-    'text-label'
-  )
+    { "text-sm": size === "small" },
+    { "text-base": size === "medium" },
+    { "text-lg": size === "large" },
+    "mb-1",
+    "font-medium",
+    "text-label"
+  );
+  const opsi = (
+    <span className="text-xs text-gray-500 text-primary">(Opsional)</span>
+  );
 
   return (
     <label htmlFor={id} className={className}>
-      {label}
+      {label} {!required ? opsi : ""}
     </label>
-  )
-}
+  );
+};
 
-export default Label
+export default Label;

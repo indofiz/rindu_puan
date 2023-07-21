@@ -26,7 +26,7 @@ const RadioGroup: FC<RadioGroup> = (props) => {
   } = props
   return (
     <div className='flex flex-col gap-1'>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={props?.required ? true : false} />
       <div className='grid grid-cols-2 gap-2' id={id}>
         {list_radio &&
           list_radio.map((item: any) => (

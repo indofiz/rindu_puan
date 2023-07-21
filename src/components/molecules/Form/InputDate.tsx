@@ -17,6 +17,7 @@ export interface DateInputProps extends VariantProps<typeof inputVariant> {
   format?: string
   placeholder?: string
   errorMessage?: any
+  required?: boolean
   onChange: (param: dataChange) => void
   handleError?: (param: dataError) => void
 }
@@ -30,11 +31,12 @@ const InputText: FC<DateInputProps> = (props) => {
     sizes,
     caption,
     errorMessage
+    // value
   } = props
 
   return (
     <div className='flex flex-col'>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={props?.required ? true : false} />
 
       <DatePick
         {...props}

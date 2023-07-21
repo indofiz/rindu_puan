@@ -10,7 +10,7 @@ export interface TextareaProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Textarea: FC<TextareaProps> = (props) => {
-  let { className = '', ...rest } = props
+  let { className = '' } = props
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   useAutosizeTextArea(textAreaRef.current, props.value!)
   // HANDLE CHANGE

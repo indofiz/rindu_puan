@@ -16,6 +16,7 @@ import {
   replaceItemAtIndex
 } from '../../../utils/arraySlice'
 import ModalDelete from '../ModalDelete'
+import { formKorbanSelector } from '../../../recoil/form'
 
 const Korban = () => {
   const [modal, setModal] = useState(false)
@@ -86,6 +87,8 @@ const Korban = () => {
     setEditIndex(null)
   }
 
+  const form = useRecoilValue(formKorbanSelector)
+
   return (
     <Template>
       <>
@@ -111,7 +114,11 @@ const Korban = () => {
           isOpen={modalEdit}
           closeModal={closeModal}
           content={
-            <KorbanForm onSave={onSaveEdit} closeModal={closeModalEdit} />
+            <KorbanForm
+              onSave={onSaveEdit}
+              closeModal={closeModalEdit}
+              form={form}
+            />
           }
         ></ModalForm>
 
@@ -119,7 +126,9 @@ const Korban = () => {
           title='Tambah Korban'
           isOpen={modal}
           closeModal={closeModal}
-          content={<KorbanForm onSave={onSave} closeModal={closeModal} />}
+          content={
+            <KorbanForm onSave={onSave} closeModal={closeModal} form={form} />
+          }
         ></ModalForm>
 
         {deleteIndex !== null ? (

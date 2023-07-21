@@ -4,9 +4,15 @@ interface LabelProps {
   id: string | undefined
   label: string
   size?: 'small' | 'medium' | 'large' | string
+  required?: boolean
 }
 
-const Label: React.FC<LabelProps> = ({ label, id, size = 'medium' }) => {
+const Label: React.FC<LabelProps> = ({
+  label,
+  id,
+  size = 'medium',
+  required = false
+}) => {
   const className = cx(
     { 'text-sm': size === 'small' },
     { 'text-base': size === 'medium' },
@@ -18,7 +24,7 @@ const Label: React.FC<LabelProps> = ({ label, id, size = 'medium' }) => {
 
   return (
     <label htmlFor={id} className={className}>
-      {label}
+      {label} {required ? <span className='text-red-500'>*</span> : null}
     </label>
   )
 }

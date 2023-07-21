@@ -1,38 +1,42 @@
 [
   {
-    "id": "nama_pelapor",
+    "id": "nama_lengkap",
     "type": "text",
     "label": "Nama Pelapor :",
-    "placeholder": "Masukan nama pelapor"
+    "placeholder": "Masukan nama pelapor",
+    "required": true
   },
   {
-    "id": "tgl_pelaporan",
+    "id": "tanggal_kejadian",
     "type": "date",
-    "label": "Tanggal Pelaporan :",
-    "placeholder": "dd-mm-yyyy",
-    "withPortal": true,
-    "format": "dd-mm-yyyy",
-    "start": 2000
-  },
-  {
-    "id": "tgl_kejadian",
-    "type": "date",
-    "placeholder": "dd-mm-yyyy",
+    "placeholder": "yyyy-MM-dd",
     "label": "Tanggal Kejadian :",
     "withPortal": true,
-    "format": "dd-mm-yyyy",
-    "start": 2000
+    "format": "yyyy-MM-dd",
+    "start": 2000,
+    "required": true
   },
   {
-    "id": "deskripsi_kronologi",
-    "type": "textarea",
-    "label": "Deskripsi Kronologi Kejadian:",
-    "placeholder": "Masukan deskripsi kronologi"
-  },
-  {
-    "id": "alamat_lengkap",
+    "id": "alamat",
     "type": "textarea",
     "label": "Alamat lengkap:",
-    "placeholder": "Masukan alamat lengkap"
+    "placeholder": "Masukan alamat lengkap",
+    "required": true
+  },
+  {
+    "id": "kronologi",
+    "type": "textarea",
+    "label": "Deskripsi Kronologi Kejadian:",
+    "placeholder": "Masukan deskripsi kronologi",
+    "required": true
+  },
+  {
+    "id": "lokasi",
+    "type": "location",
+    "label": "Lokasi Kejadian:",
+    "required": true,
+    "latitudeId": "latitude",
+    "longitudeId": "longitude",
+    "caption": "Jika sesuai dengan lokasi anda sekarang klik aktifkan lokasi, tetapi jika ingin memilih manual silahkan matikan lalu pilih manual."
   }
 ]

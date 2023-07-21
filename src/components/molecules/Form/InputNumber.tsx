@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import Input, { InputProps } from '../../atoms/Form/Input'
 import Label from '../../atoms/Form/Label'
 import { VariantProps } from 'class-variance-authority'
@@ -26,20 +26,20 @@ const InputNumber: FC<EmailInputProps> = (props) => {
     errorMessage
   } = props
 
-  const [tempData, setTempData] = useState('')
+  // const [tempData, setTempData] = useState('')
   const handleChange = (param: dataChange) => {
     // CHECK PATTERN NUMBER
     const regex = /^[0-9\b]+$/
 
     if (param.target.value === '' || regex.test(param.target.value)) {
-      setTempData(param.target.value)
+      // setTempData(param.target.value)
       props.onChange(param)
     }
   }
 
   return (
     <div className='flex flex-col'>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={props?.required ? true : false} />
 
       <Input
         {...props}

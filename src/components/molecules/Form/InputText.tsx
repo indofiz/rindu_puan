@@ -25,7 +25,7 @@ const InputText: FC<TextInputProps> = (props) => {
 
   return (
     <div className='flex flex-col'>
-      <Label id={id} label={label} />
+      <Label id={id} label={label} required={props?.required ? true : false} />
 
       <Input
         {...props}

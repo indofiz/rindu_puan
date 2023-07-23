@@ -21,9 +21,9 @@ const Label: React.FC<LabelProps> = ({
     "font-medium",
     "text-label"
   );
-  const opsi = (
-    <span className="text-xs text-gray-500 text-primary">(Opsional)</span>
-  );
+  // const opsi = (
+  //   <span className="text-xs text-gray-500 text-primary">(Opsional)</span>
+  // );
 
   return (
     <label htmlFor={id} className={className}>

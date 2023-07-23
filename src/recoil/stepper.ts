@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { selector } from "recoil";
 import dataForm from "../template/Pengajuan/Data/FormLaporan.json";
 
 // export const formLaporan = atom({

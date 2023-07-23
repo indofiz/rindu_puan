@@ -7,6 +7,7 @@ import { laporanForm } from "../../../recoil/stepper";
 const Laporan = () => {
   const { handleChange, handleError, data, dataError, handleChangeLocation } =
     metaDataPengajuan();
+  const { listFormLaporan } = useRecoilValue(laporanForm);
 
   return (
     <Template>

@@ -5,7 +5,7 @@ import StepperPengajuan from "../template/Pengajuan/StepperPengajuan";
 const Pengajuan = () => {
   return (
     <div className="bg-cream">
-      <div className="max-w-lg bg-background mx-auto">
+      <div className="bg-background mx-auto md:min-h-screen">
         <Header />
         <StepperPengajuan />
         <Footer />

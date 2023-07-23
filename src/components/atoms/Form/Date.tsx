@@ -1,10 +1,11 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import './style/datepicker.css'
 
 import clxs from 'clsx'
 import { cn } from '../../../utils/classMerge'
 import { dataChange } from '../../organism/Form/utils/param'
+import { format as frmt, parse } from 'date-fns'
 
 interface InputDateProps {
   id: string
@@ -43,14 +44,19 @@ const DatePick: FC<InputDateProps> = (props) => {
     format,
     id,
     withPortal = false,
-    placeholder
+    placeholder,
+    value
   } = props
+
   const [startDate, setStartDate] = useState<Date | null>(null)
+  useEffect(() => {
+    if (value) setStartDate(parse(String(value), 'yyyy-MM-dd', new Date()))
+  }, [])
 
   const handleChange = (date: Date) => {
     setStartDate(date)
     const data = {
-      target: { name: id, value: Math.floor(date.getTime() / 1000).toString() }
+      target: { name: id, value: frmt(date, 'yyyy-MM-dd') }
     }
     props.onChange(data)
   }

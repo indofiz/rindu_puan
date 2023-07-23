@@ -18,7 +18,7 @@ const formMetaData = () => {
     tgl_lahir: []
   })
 
-  const [dataForm, setDataForm] = useState<any>([
+  const [dataForm] = useState<any>([
     {
       id: 'nama',
       type: 'text',
@@ -50,7 +50,7 @@ const formMetaData = () => {
       type: 'date',
       label: 'Tanggal Lahir :',
       withPortal: false,
-      format: 'dd-mm-yyyy',
+      format: 'yyyy-MM-dd',
       start: 2000,
       stop: 2014,
       message: [

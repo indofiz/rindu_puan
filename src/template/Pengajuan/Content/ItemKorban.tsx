@@ -1,4 +1,5 @@
 import { Korban } from '../../../recoil/pengajuan'
+import { calculateFullAge } from '../../../utils/calculateBirthday'
 
 interface ListOrang {
   item: Korban
@@ -59,17 +60,23 @@ const ItemKorban: React.FC<ListOrang> = ({ item, index, onRemove, onEdit }) => {
       />
     </svg>
   )
+
   return (
     <div className='relative bg-white border overflow-hidden border-gray-200 px-6 py-3 rounded-lg w-full'>
       <h3 className='text-lg font-medium'>{item.nama_lengkap}</h3>
       <div className='flex gap-4 mt-1'>
         <div className='flex items-center gap-1'>
           <span>{icon_genre}</span>
-          <span className='text-sm capitalize'>{item.jenis_kelamin}</span>
+          <span className='text-sm capitalize'>
+            {' '}
+            {item.jenis_kelamin == 'L' ? 'Laki - Laki' : 'Perempuan'}
+          </span>
         </div>
         <div className='flex items-center gap-1'>
           <span>{item.jenis_kelamin === 'pria' ? icon_kakek : icon_nenek}</span>
-          <span className='text-sm'>24 Tahun</span>
+          <span className='text-sm'>
+            {calculateFullAge(item.tanggal_lahir).years} Tahun
+          </span>
         </div>
       </div>
       <div className='absolute right-0 bottom-0 bg-secondary rounded-tl-md overflow-hidden'>

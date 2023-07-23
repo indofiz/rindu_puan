@@ -1,12 +1,13 @@
 import BackButton from './BackButton'
 import logo from '../../assets/images/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  const navigate = useNavigate()
   return (
-    <div className='relative py-3 flex items-center justify-center'>
+    <div className='relative py-3 flex items-center justify-center md:container md:mx-auto'>
       <div className='absolute left-4'>
-        <BackButton onClick={() => null} />
+        <BackButton onClick={() => navigate('/')} />
       </div>
       <div className=''>
         <Link to='/' relative='path'>

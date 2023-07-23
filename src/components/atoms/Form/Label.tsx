@@ -11,7 +11,7 @@ const Label: React.FC<LabelProps> = ({
   label,
   id,
   size = "medium",
-  required = true,
+  required = false,
 }) => {
   const className = cx(
     { "text-sm": size === "small" },
@@ -27,7 +27,7 @@ const Label: React.FC<LabelProps> = ({
 
   return (
     <label htmlFor={id} className={className}>
-      {label} {!required ? opsi : ""}
+      {label} {required ? <span className="text-red-500">*</span> : null}
     </label>
   );
 };

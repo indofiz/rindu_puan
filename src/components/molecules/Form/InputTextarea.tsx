@@ -27,7 +27,7 @@ const InputTextarea: FC<TextAreaInputProps> = (props) => {
 
   return (
     <div className="flex flex-col w-full">
-      <Label id={id} label={label} required={props.required} />
+      <Label id={id} label={label} required={props?.required ? true : false} />
 
       <Textarea
         id={id}

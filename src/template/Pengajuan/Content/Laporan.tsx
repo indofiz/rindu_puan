@@ -5,8 +5,8 @@ import { useRecoilValue } from "recoil";
 import { laporanForm } from "../../../recoil/stepper";
 
 const Laporan = () => {
-  const { handleChange, handleError, data, dataError } = metaDataPengajuan();
-  const { listFormLaporan } = useRecoilValue(laporanForm);
+  const { handleChange, handleError, data, dataError, handleChangeLocation } =
+    metaDataPengajuan();
 
   return (
     <Template>
@@ -17,9 +17,24 @@ const Laporan = () => {
             key={item.id}
             item={item}
             onChange={handleChange}
+            onChangeLocation={handleChangeLocation}
             handleError={handleError}
             errorMessage={dataError[item.id]}
             data={data[item.id]}
+            latitude={
+              item.type == "location"
+                ? data[item.latitudeId]
+                  ? data[item.latitudeId]
+                  : -2.120191
+                : -2.120191
+            }
+            longitude={
+              item.type == "location"
+                ? data[item.longitudeId]
+                  ? data[item.longitudeId]
+                  : 106.113606
+                : 106.113606
+            }
           />
         ))}
       </div>

@@ -31,11 +31,12 @@ const InputText: FC<DateInputProps> = (props) => {
     sizes,
     caption,
     errorMessage,
+    // value
   } = props;
 
   return (
     <div className="flex flex-col">
-      <Label id={id} label={label} required={props.required} />
+      <Label id={id} label={label} required={props?.required ? true : false} />
 
       <DatePick
         {...props}

@@ -2,28 +2,48 @@ import { atom, selector } from 'recoil'
 
 export interface Korban {
   nama_lengkap: string
-  nik: string
-  tempat_lahir: string
-  tgl_lahir: string
-  alamat_lengkap_korban: string
+  email?: string
+  nik?: string
+  tempat_lahir?: string
+  tanggal_lahir?: string
+  alamat: string
   jenis_kelamin: string
-  no_telpon: string
+  no_hp: string
   pekerjaan: string
   status_perkawinan: string
-  apakah_difabel: string
-  kategori_kekerasan: string
-  tindak_kekerasan_dialami: string
+  difabel: string
+  tindak_kekerasan: string
+  id_kategori: string
+}
+
+export interface Pelaku {
+  nama_lengkap: string
+  nik?: string
+  tempat_lahir?: string
+  tanggal_lahir?: string
+  alamat: string
+  jenis_kelamin: string
+  no_hp: string
+  pekerjaan: string
+  status_perkawinan: string
+  hubungan_keluarga: string
 }
 
 export const dataLaporan = atom({
   key: 'dataLaporan',
   default: {
-    nama_pelapor: '',
-    tgl_pelaporan: '',
-    tgl_kejadian: '',
-    alamat_lengkap: '',
-    deskripsi_kronologi: ''
+    nama_lengkap: '',
+    tanggal_kejadian: '',
+    latitude: '',
+    longitude: '',
+    alamat: '',
+    kronologi: ''
   }
+})
+
+export const statusPengajuan = atom({
+  key: 'statusPengajuan',
+  default: 'initial'
 })
 
 export const dataKorban = atom({
@@ -33,7 +53,7 @@ export const dataKorban = atom({
 
 export const dataPelaku = atom({
   key: 'dataPelaku',
-  default: []
+  default: [] as Pelaku[]
 })
 
 export const dataSementaraKorban = atom({
@@ -41,16 +61,17 @@ export const dataSementaraKorban = atom({
   default: {
     nama_lengkap: '',
     nik: '',
+    email: '',
     tempat_lahir: '',
-    tgl_lahir: '',
-    alamat_lengkap_korban: '',
+    tanggal_lahir: '',
+    alamat: '',
     jenis_kelamin: '',
-    no_telpon: '',
+    no_hp: '',
     pekerjaan: '',
     status_perkawinan: '',
-    apakah_difabel: '',
-    kategori_kekerasan: '',
-    tindak_kekerasan_dialami: ''
+    difabel: '',
+    id_kategori: '',
+    tindak_kekerasan: ''
   } as Korban
 })
 
@@ -61,13 +82,13 @@ export const dataSementaraPelaku = atom({
     nik: '',
     tempat_lahir: '',
     tanggal_lahir: '',
-    alamat_lengkap_korban: '',
+    alamat: '',
     jenis_kelamin: '',
-    no_telpon: '',
+    no_hp: '',
     pekerjaan: '',
     status_perkawinan: '',
-    hubungan_dengan_korban: ''
-  }
+    hubungan_keluarga: ''
+  } as Pelaku
 })
 
 export const dataErrorField = atom({
@@ -81,7 +102,7 @@ export const semuaDataLaporan = selector({
     const laporan = get(dataLaporan)
     const korban = get(dataKorban)
     const pelaku = get(dataPelaku)
-    return { ...laporan, korban: { ...korban }, pelaku: { ...pelaku } }
+    return { ...laporan, korban: [...korban], pelaku: [...pelaku] }
   }
 })
 
@@ -89,18 +110,36 @@ export const isLaporan = selector({
   key: 'isLaporan',
   get: ({ get }) => {
     const {
-      nama_pelapor,
-      tgl_kejadian,
-      tgl_pelaporan,
-      alamat_lengkap,
-      deskripsi_kronologi
+      nama_lengkap,
+      tanggal_kejadian,
+      longitude,
+      latitude,
+      alamat,
+      kronologi
     } = get(dataLaporan)
-    return nama_pelapor &&
-      tgl_kejadian &&
-      tgl_pelaporan &&
-      alamat_lengkap &&
-      deskripsi_kronologi
+    return nama_lengkap &&
+      tanggal_kejadian &&
+      latitude &&
+      longitude &&
+      kronologi &&
+      alamat
       ? true
       : false
+  }
+})
+
+export const isKorban = selector({
+  key: 'isKorban',
+  get: ({ get }) => {
+    const korban = get(dataKorban)
+    return korban.length > 0
+  }
+})
+
+export const isPelaku = selector({
+  key: 'isPelaku',
+  get: ({ get }) => {
+    const pelaku = get(dataPelaku)
+    return pelaku.length > 0
   }
 })

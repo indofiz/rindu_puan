@@ -4,13 +4,14 @@ import { VariantProps, cva } from 'class-variance-authority'
 import { Link } from 'react-router-dom'
 
 const buttonVariant = cva(
-  'rounded text-base font-semibold px-5 py-3 text-center',
+  'rounded text-base font-semibold px-5 py-3 md:py-4 md:px-8 text-center',
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-white',
+        primary:
+          'bg-primary text-white disabled:bg-primary/60 disabled:cursor-not-allowed',
         secondary: 'bg-white text-back border border-gray-300',
-        noBorder: 'bg-white text-black'
+        noBorder: 'bg-white text-black hover:bg-gray-100'
       }
     },
     defaultVariants: { variant: 'primary' }
@@ -29,6 +30,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const { label, onClick, variant, isLink = false } = props
   return !isLink ? (
     <button
+      {...props}
       onClick={onClick}
       className={cn(buttonVariant({ variant }), props.className)}
     >

@@ -3,7 +3,8 @@
     "id": "nama_lengkap",
     "type": "text",
     "label": "Nama Lengkap :",
-    "placeholder": "Masukan nama pelaku"
+    "placeholder": "Masukan nama pelaku",
+    "required": true
   },
   {
     "id": "nik",
@@ -18,63 +19,64 @@
     "placeholder": "Masukan tempat lahir"
   },
   {
-    "id": "tgl_lahir",
+    "id": "tanggal_lahir",
     "type": "date",
     "label": "Tanggal Lahir :",
-    "placeholder": "dd-mm-yyyy",
+    "placeholder": "yyyy-MM-dd",
     "withPortal": true,
-    "format": "dd-mm-yyyy",
+    "format": "yyyy-MM-dd",
     "start": 1940
   },
+
   {
-    "id": "tgl_kejadian",
-    "type": "date",
-    "placeholder": "dd-mm-yyyy",
-    "label": "Tanggal Kejadian :",
-    "withPortal": true,
-    "format": "dd-mm-yyyy",
-    "start": 2000
-  },
-  {
-    "id": "alamat_lengkap_pelaku",
+    "id": "alamat",
     "type": "textarea",
     "label": "Alamat lengkap pelaku:",
-    "placeholder": "Masukan alamat lengkap"
+    "placeholder": "Masukan alamat lengkap",
+    "required": true
   },
   {
     "id": "jenis_kelamin",
     "type": "radio_group",
     "label": "Jenis Kelamin:",
     "list_radio": [
-      { "id": "pria", "value": "pria", "label": "Pria" },
-      { "id": "wanita", "value": "wanita", "label": "Wanita" }
-    ]
+      { "id": "pria", "value": "L", "label": "Pria" },
+      { "id": "wanita", "value": "P", "label": "Wanita" }
+    ],
+    "required": true
   },
   {
-    "id": "no_telpon",
+    "id": "no_hp",
     "type": "number",
     "label": "Nomor Handphone :",
-    "placeholder": "Masukan Nomor Handphone"
+    "placeholder": "Masukan Nomor Handphone",
+    "required": true
+  },
+  {
+    "id": "status_perkawinan",
+    "type": "select",
+    "label": "Status Perkawinan:",
+    "placeholder": "Pilih Status",
+    "dataOption": [
+      { "label": "Belum Kawin", "value": "BELUM_KAWIN" },
+      { "label": "Kawin", "value": "KAWIN" },
+      { "label": "Cerai Hidup", "value": "CERAI_HIDUP" },
+      { "label": "Cerai Mati", "value": "CERAI_MATI" }
+    ],
+    "required": true
   },
   {
     "id": "pekerjaan",
     "type": "text",
     "label": "Pekerjaan:",
-    "placeholder": "Masukan Pekerjaan"
+    "placeholder": "Masukan Pekerjaan",
+    "required": true
   },
   {
-    "id": "status_perkawinan",
-    "type": "radio_group",
-    "label": "Status Perkawinan?",
-    "list_radio": [
-      { "id": "menikah", "value": "menikah", "label": "Menikah" },
-      { "id": "cerai", "value": "cerai", "label": "Cerai" }
-    ]
-  },
-  {
-    "id": "hubungan_dengan_korban",
+    "id": "hubungan_keluarga",
     "type": "text",
     "label": "Hubungan dengan korban?",
-    "placeholder": "contoh: Suami"
+    "placeholder": "contoh: Suami",
+    "required": true
   }
 ]

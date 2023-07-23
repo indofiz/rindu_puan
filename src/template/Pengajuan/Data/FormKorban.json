@@ -3,87 +3,112 @@
     "id": "nama_lengkap",
     "type": "text",
     "label": "Nama Lengkap :",
-    "placeholder": "Masukan nama pelapor"
+    "placeholder": "Masukan nama korban",
+    "required": true
+  },
+  {
+    "id": "email",
+    "type": "email",
+    "label": "Email :",
+    "placeholder": "Masukan email",
+    "required": false
   },
   {
     "id": "nik",
     "type": "number",
     "label": "NIK Ktp :",
-    "placeholder": "Masukan NIK"
+    "placeholder": "Masukan NIK",
+    "required": false
   },
   {
     "id": "tempat_lahir",
     "type": "text",
     "label": "Tempat Lahir :",
-    "placeholder": "Masukan tempat lahir"
+    "placeholder": "Masukan tempat lahir",
+    "required": false
   },
   {
-    "id": "tgl_lahir",
+    "id": "tanggal_lahir",
     "type": "date",
     "label": "Tanggal Lahir :",
-    "placeholder": "dd-mm-yyyy",
+    "placeholder": "yyyy-MM-dd",
     "withPortal": true,
-    "format": "dd-mm-yyyy",
-    "start": 2000
+    "format": "yyyy-MM-dd",
+    "start": 2000,
+    "required": false
   },
   {
-    "id": "tgl_kejadian",
-    "type": "date",
-    "placeholder": "dd-mm-yyyy",
-    "label": "Tanggal Kejadian :",
-    "withPortal": true,
-    "format": "dd-mm-yyyy",
-    "start": 2000
-  },
-  {
-    "id": "alamat_lengkap_korban",
+    "id": "alamat",
     "type": "textarea",
     "label": "Alamat lengkap Korban:",
-    "placeholder": "Masukan alamat lengkap"
+    "placeholder": "Masukan alamat lengkap",
+    "required": true
   },
   {
     "id": "jenis_kelamin",
     "type": "radio_group",
     "label": "Jenis Kelamin:",
     "list_radio": [
-      { "id": "pria", "value": "pria", "label": "Pria" },
-      { "id": "wanita", "value": "wanita", "label": "Wanita" }
-    ]
+      { "id": "pria", "value": "L", "label": "Laki-Laki" },
+      { "id": "wanita", "value": "P", "label": "Wanita" }
+    ],
+    "required": true
   },
   {
-    "id": "no_telpon",
+    "id": "no_hp",
     "type": "number",
     "label": "Nomor Handphone :",
-    "placeholder": "Masukan Nomor Handphone"
+    "placeholder": "Masukan Nomor Handphone",
+    "required": true
+  },
+  {
+    "id": "status_perkawinan",
+    "type": "select",
+    "label": "Status Perkawinan:",
+    "placeholder": "Pilih Status",
+    "dataOption": [
+      { "label": "Belum Kawin", "value": "BELUM_KAWIN" },
+      { "label": "Kawin", "value": "KAWIN" },
+      { "label": "Cerai Hidup", "value": "CERAI_HIDUP" },
+      { "label": "Cerai Mati", "value": "CERAI_MATI" }
+    ],
+    "required": true
+  },
+  {
+    "id": "id_kategori",
+    "type": "select",
+    "label": "Kategori:",
+    "placeholder": "Pilih Kategori Kekerasan",
+    "dataOption": [
+      { "label": "Belum Kawin", "value": "BELUM_KAWIN" },
+      { "label": "Kawin", "value": "KAWIN" },
+      { "label": "Cerai Hidup", "value": "CERAI_HIDUP" },
+      { "label": "Cerai Mati", "value": "CERAI_MATI" }
+    ],
+    "required": true
   },
   {
     "id": "pekerjaan",
     "type": "text",
     "label": "Pekerjaan:",
-    "placeholder": "Masukan Pekerjaan"
+    "placeholder": "Masukan Pekerjaan",
+    "required": true
   },
   {
-    "id": "status_perkawinan",
-    "type": "radio_group",
-    "label": "Status Perkawinan?",
-    "list_radio": [
-      { "id": "menikah", "value": "menikah", "label": "Menikah" },
-      { "id": "cerai", "value": "cerai", "label": "Cerai" }
-    ]
-  },
-  {
-    "id": "apakah_difabel",
+    "id": "difabel",
     "type": "radio_group",
     "label": "Apakah difabel?",
     "list_radio": [
-      { "id": "ya", "value": "ya", "label": "Ya" },
-      { "id": "tidak", "value": "tidak", "label": "Tidak" }
-    ]
+      { "id": "ya", "value": "1", "label": "Ya" },
+      { "id": "tidak", "value": "0", "label": "Tidak" }
+    ],
+    "required": true
   },
   {
-    "id": "tindak_kekerasan_dialami",
+    "id": "tindak_kekerasan",
     "type": "textarea",
     "label": "Tindak kekerasan yang dialami:",
-    "placeholder": "Tindak kekerasan yang dialami"
+    "placeholder": "Tindak kekerasan yang dialami",
+    "required": true
   }
 ]

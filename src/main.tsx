@@ -3,14 +3,21 @@ import ReactDOM from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Lottie from 'lottie-react'
-import App from './App.tsx'
+// import App from './App.tsx'
 import './index.css'
-import Pengajuan from './pages/Pengajuan.tsx'
 import { RecoilRoot } from 'recoil'
-import Article from './pages/Article.tsx'
+// import Pengajuan from './pages/Pengajuan.tsx'
+// import Article from './pages/Article.tsx'
+// import ErrorPage from './pages/ErrorPage.tsx'
+// import ListArticle from './pages/ListArticle.tsx'
 import loading from './assets/lottie/loading_2.json'
-import ErrorPage from './pages/ErrorPage.tsx'
-import ListArticle from './pages/ListArticle.tsx'
+
+const App = React.lazy(() => import('./App.tsx'))
+const Pengajuan = React.lazy(() => import('./pages/Pengajuan.tsx'))
+const Article = React.lazy(() => import('./pages/Article.tsx'))
+const ErrorPage = React.lazy(() => import('./pages/ErrorPage.tsx'))
+const FaqPage = React.lazy(() => import('./pages/Faq.tsx'))
+const ListArticle = React.lazy(() => import('./pages/ListArticle.tsx'))
 
 const router = createBrowserRouter([
   {
@@ -19,6 +26,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   { path: '/pengajuan', element: <Pengajuan /> },
+  { path: '/faq', element: <FaqPage /> },
   { path: '/artikel', element: <ListArticle /> },
   { path: '/artikel/:articleId/:articleSlug', element: <Article /> }
 ])

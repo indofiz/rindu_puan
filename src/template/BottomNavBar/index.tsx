@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
 import pengajuan_icon from '../../assets/icon/ajukan.svg'
 import { Home, Phone } from 'lucide-react'
+import { useRecoilValue } from 'recoil'
+import { konfigState } from '../../recoil/api/apiKonfigursi'
+import { phoneNumber } from '../../utils/phoneNumber'
 
 const BottomNavBar = () => {
+  const konfigurasi = useRecoilValue(konfigState)
+
+  const phone = phoneNumber(konfigurasi.nomor_kontak)
+
   return (
     <div className='fixed z-40 md:hidden border-t-2 border-gray-200 bottom-0 left-0 right-0 max-w-lg mx-auto bg-white'>
       <div className='relative flex justify-between px-12 py-5'>
@@ -13,7 +20,7 @@ const BottomNavBar = () => {
         <div className='flex flex-col items-center justify-center gap-1 text-gray-400'>
           <Phone />
           <a
-            href='https://wa.me'
+            href={'https://wa.me/' + phone}
             className='text-sm text-gray-400'
             target='_blank'
             rel='noopener noreferrer'

@@ -4,8 +4,16 @@ import { ArticleFace } from '../recoil/types/article'
 import ListBerita from '../components/atoms/Home/Berita/ListBerita'
 import Header from '../template/Pengajuan/Header'
 import Footer from '../template/Footer'
+import { useEffect } from 'react'
 
 const ListArticle = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [])
+
   const article = useRecoilValue(articleListState)
 
   const mapArticle =

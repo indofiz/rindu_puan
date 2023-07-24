@@ -1,5 +1,6 @@
 import { Dialog } from '@headlessui/react'
 import BackButton from './BackButton'
+import { ArrowLeft } from 'lucide-react'
 
 interface ModalForm {
   isOpen: boolean
@@ -22,7 +23,11 @@ const ModalForm: React.FC<ModalForm> = ({
           <Dialog.Panel className='bg-white self-stretch md:self-center max-w-lg md:my-16 flex-1 w-full p-4'>
             <Dialog.Title className='flex mt-3 relative items-center'>
               <span className='absolute left-0'>
-                <BackButton onClick={closeModal} />
+                <BackButton
+                  label='Home'
+                  icon={<ArrowLeft size={18} />}
+                  onClick={closeModal}
+                />
               </span>
               <span className='flex-1 text-center text-xl font-medium'>
                 {title}

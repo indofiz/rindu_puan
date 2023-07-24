@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PlusButton from '../PlusButton'
 import Template from './Template'
 import ModalForm from '../ModalForm'
@@ -29,6 +29,13 @@ const Pelaku = () => {
   const [dataSementara, setDataSementara] = useRecoilState(dataSementaraPelaku)
 
   const resetDataSementara = useResetRecoilState(dataSementaraPelaku)
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [])
 
   const onModalState = () => {
     setModal((prev) => !prev)

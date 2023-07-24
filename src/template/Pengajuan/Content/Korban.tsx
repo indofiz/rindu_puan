@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 import PlusButton from '../PlusButton'
 import Template from './Template'
@@ -30,6 +30,13 @@ const Korban = () => {
   const [dataSementara, setDataSementara] = useRecoilState(dataSementaraKorban)
 
   const resetDataSementara = useResetRecoilState(dataSementaraKorban)
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [])
 
   const onModalState = () => {
     setModal((prev) => !prev)

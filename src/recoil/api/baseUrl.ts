@@ -22,3 +22,14 @@ export const getArticleDetailApiUrl = ({ id = '' }: { id: string }) =>
 export const postPengajuanApiUrl = () => baseUrl + 'pengajuan'
 // KATEGORI KEKERASAN
 export const getKekerasanApiUrl = () => baseUrl + 'kategori-kekerasan'
+
+// KONFIGURASI
+export const konfigurasiApiUrl = () => baseUrl + 'konfigurasi/public'
+// FAQ
+export const faqApiUrl = ({
+  skip = 0,
+  length = 100
+}: {
+  skip: number
+  length: number
+}) => `${baseUrl}faqs?skip=${skip}&length=${length}`

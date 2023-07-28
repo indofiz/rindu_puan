@@ -24,7 +24,7 @@ const ModalForm: React.FC<ModalForm> = ({
             <Dialog.Title className='flex mt-3 relative items-center'>
               <span className='absolute left-0'>
                 <BackButton
-                  label='Home'
+                  label='Back'
                   icon={<ArrowLeft size={18} />}
                   onClick={closeModal}
                 />

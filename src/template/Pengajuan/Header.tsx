@@ -1,5 +1,5 @@
 import BackButton from './BackButton'
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/icon/logo_2.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { Home } from 'lucide-react'
 
@@ -16,7 +16,7 @@ const Header = () => {
       </div>
       <div className=''>
         <Link to='/' relative='path'>
-          <img src={logo} alt='' className='mx-auto w-32' />
+          <img src={logo} alt='' className='mx-auto h-12' />
         </Link>
       </div>
     </div>

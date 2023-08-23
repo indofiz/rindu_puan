@@ -7,6 +7,13 @@
     "required": true
   },
   {
+    "id": "no_hp",
+    "type": "number",
+    "label": "Nomor HP Pelapor :",
+    "placeholder": "Masukan Nomor Handphone",
+    "required": true
+  },
+  {
     "id": "tanggal_kejadian",
     "type": "date",
     "placeholder": "yyyy-MM-dd",
@@ -31,9 +38,19 @@
     "required": true
   },
   {
+    "id": "is_pangkalpinang",
+    "type": "radio_group",
+    "label": "Apakah terjadi dipangkalpinang?:",
+    "list_radio": [
+      { "id": "ya", "value": "1", "label": "Iya" },
+      { "id": "tidak", "value": "0", "label": "Tidak" }
+    ],
+    "required": true
+  },
+  {
     "id": "lokasi",
     "type": "location",
-    "label": "Lokasi Kejadian:",
+    "label": "Lokasi Pelaporan:",
     "required": true,
     "latitudeId": "latitude",
     "longitudeId": "longitude",

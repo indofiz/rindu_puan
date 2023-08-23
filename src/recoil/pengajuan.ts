@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil'
 
 export interface Korban {
+  uid: string
   nama_lengkap: string
   email?: string
   nik?: string
@@ -17,6 +18,7 @@ export interface Korban {
 }
 
 export interface Pelaku {
+  uid: string
   nama_lengkap: string
   nik?: string
   tempat_lahir?: string
@@ -29,6 +31,10 @@ export interface Pelaku {
   hubungan_keluarga: string
 }
 
+export interface Berkas {
+  [key: string]: File
+}
+
 export const dataLaporan = atom({
   key: 'dataLaporan',
   default: {
@@ -39,6 +45,21 @@ export const dataLaporan = atom({
     alamat: '',
     kronologi: ''
   }
+})
+
+export const dataFileKorban = atom({
+  key: 'dataFileKorban',
+  default: [] as Berkas[]
+})
+
+export const dataFilePelaku = atom({
+  key: 'dataFilePelaku',
+  default: [] as Berkas[]
+})
+
+export const dataFileSementara = atom({
+  key: 'dataFileSementara',
+  default: {} as Berkas
 })
 
 export const statusPengajuan = atom({
@@ -102,7 +123,44 @@ export const semuaDataLaporan = selector({
     const laporan = get(dataLaporan)
     const korban = get(dataKorban)
     const pelaku = get(dataPelaku)
-    return { ...laporan, korban: [...korban], pelaku: [...pelaku] }
+    const fileKorban = get(dataFileKorban)
+    const filePelaku = get(dataFilePelaku)
+
+    let listNewKorban = korban.length
+      ? korban.map((item, indexKorban) => {
+          let newObj = {}
+          // get Korban File
+          // cek Length File
+          const korbanFile = fileKorban[indexKorban]
+          if (Object.keys(korbanFile).length) {
+            Object.keys(korbanFile).forEach((krbnFile) => {
+              Object.assign(newObj, { [krbnFile]: korbanFile[krbnFile] })
+            })
+          }
+          return Object.assign(newObj, { ...item })
+        })
+      : []
+
+    let listNewPelaku = pelaku.length
+      ? pelaku.map((item, indexPelaku) => {
+          let newObj = {}
+          // get Pelaku File
+          // cek Length File
+          const pelakuFile = filePelaku[indexPelaku]
+          if (Object.keys(pelakuFile).length) {
+            Object.keys(pelakuFile).forEach((plkuFile) => {
+              Object.assign(newObj, { [plkuFile]: pelakuFile[plkuFile] })
+            })
+          }
+          return Object.assign(newObj, { ...item })
+        })
+      : []
+
+    return {
+      ...laporan,
+      korban: [...listNewKorban],
+      pelaku: [...listNewPelaku]
+    }
   }
 })
 

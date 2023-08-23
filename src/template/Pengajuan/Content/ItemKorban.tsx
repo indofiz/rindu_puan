@@ -61,6 +61,14 @@ const ItemKorban: React.FC<ListOrang> = ({ item, index, onRemove, onEdit }) => {
     </svg>
   )
 
+  const umur = calculateFullAge(item.tanggal_lahir)
+  const umurRender =
+    umur.years !== 0
+      ? `${umur.years} Tahun`
+      : umur.months !== 0
+      ? `${umur.months} Bulan`
+      : `${umur.days} Hari`
+
   return (
     <div className='relative bg-white border overflow-hidden border-gray-200 px-6 py-3 rounded-lg w-full'>
       <h3 className='text-lg font-medium'>{item.nama_lengkap}</h3>
@@ -74,9 +82,7 @@ const ItemKorban: React.FC<ListOrang> = ({ item, index, onRemove, onEdit }) => {
         </div>
         <div className='flex items-center gap-1'>
           <span>{item.jenis_kelamin === 'pria' ? icon_kakek : icon_nenek}</span>
-          <span className='text-sm'>
-            {calculateFullAge(item.tanggal_lahir).years} Tahun
-          </span>
+          <span className='text-sm'>{umurRender}</span>
         </div>
       </div>
       <div className='absolute right-0 bottom-0 bg-secondary rounded-tl-md overflow-hidden'>

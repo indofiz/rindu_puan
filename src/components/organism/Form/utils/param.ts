@@ -1,5 +1,5 @@
 export interface dataChange {
-  target: { name: string; value: string }
+  target: { name: string; value: string | File | null }
 }
 
 export interface dataChangeLocation {

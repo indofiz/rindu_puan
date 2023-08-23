@@ -6,7 +6,10 @@ import ModalForm from '../ModalForm'
 import KorbanForm from './KorbanForm'
 import ItemKorban from './ItemKorban'
 import {
+  Berkas,
   Korban as Krbn,
+  dataFileKorban,
+  dataFileSementara,
   dataKorban,
   dataSementaraKorban
 } from '../../../recoil/pengajuan'
@@ -27,8 +30,13 @@ const Korban = () => {
 
   const [listDataKorban, setListDataKorban] = useRecoilState(dataKorban)
 
+  const [listFile, setListFile] = useRecoilState(dataFileKorban)
+
+  const [fileSementara, setFileSementara] = useRecoilState(dataFileSementara)
+
   const [dataSementara, setDataSementara] = useRecoilState(dataSementaraKorban)
 
+  const resetDataFileSementara = useResetRecoilState(dataFileSementara)
   const resetDataSementara = useResetRecoilState(dataSementaraKorban)
 
   useEffect(() => {
@@ -46,11 +54,16 @@ const Korban = () => {
     setDeleteIndex(null)
     setModalDelete(false)
   }
+
   const closeModal = () => {
+    resetDataSementara()
+    resetDataFileSementara()
     setModal(false)
   }
+
   const closeModalEdit = () => {
     resetDataSementara()
+    resetDataFileSementara()
     setModalEdit(false)
   }
 
@@ -62,7 +75,9 @@ const Korban = () => {
   const handleRemove = (index: number) => {
     if (deleteIndex !== null) {
       const newList = removeItemAtIndex(listDataKorban, index)
+      const newFileList = removeItemAtIndex(listFile, index)
       setListDataKorban(newList)
+      setListFile(newFileList)
     }
     setDeleteIndex(null)
   }
@@ -70,14 +85,23 @@ const Korban = () => {
   const onEdit = (index: number) => {
     setEditIndex(index)
     setDataSementara(listDataKorban[index])
+    setFileSementara(listFile[index])
     setModalEdit(true)
   }
 
-  const onSave = () => {
+  const onSave = (uid: string) => {
     setListDataKorban((oldDataKorban: Krbn[]) => [
       ...oldDataKorban,
-      dataSementara
+      { ...dataSementara, uid: uid }
     ])
+
+    if (Object.keys(fileSementara).length) {
+      setListFile((prev: Berkas[]) => [...prev, fileSementara])
+    } else {
+      setListFile((prev: Berkas[]) => [...prev, {}])
+    }
+
+    resetDataFileSementara()
     resetDataSementara()
   }
 
@@ -88,7 +112,16 @@ const Korban = () => {
         editIndex,
         dataSementara
       )
+
+      const newFile: Berkas[] = replaceItemAtIndex(
+        listFile,
+        editIndex,
+        fileSementara
+      )
+
       setListDataKorban(newList)
+      setListFile(newFile)
+      resetDataFileSementara()
       resetDataSementara()
     }
     setEditIndex(null)
@@ -105,7 +138,7 @@ const Korban = () => {
               <ItemKorban
                 item={item}
                 index={index}
-                key={item.nik}
+                key={index}
                 onRemove={onRemove}
                 onEdit={onEdit}
               />

@@ -26,6 +26,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import Selesai from './Content/Selesai'
 import { useNavigate } from 'react-router-dom'
+import { jsonToFormData } from '../../utils/convertObjectToFormData'
 
 const StepperPengajuan = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -75,12 +76,14 @@ const StepperPengajuan = () => {
     navigate('/')
   }
 
-  // console.log(semuaData)
   const handleSave = async (nextPage: () => void) => {
     const articleApiUrl = postPengajuanApiUrl()
     setIsLoading(true)
     try {
-      const response = await axios.post<any>(articleApiUrl, semuaData)
+      const response = await axios.post<any>(
+        articleApiUrl,
+        jsonToFormData(semuaData)
+      )
       if (response.status == 201) {
         setStatusPengajuan('success')
         setIsLoading(false)
@@ -140,6 +143,7 @@ const StepperPengajuan = () => {
                   disabled={!isLaporanTrue}
                   className='w-full'
                   onClick={isLaporanTrue ? nextStep : undefined}
+                  // onClick={nextStep}
                   label='Selanjutnya'
                 />
                 <Button
@@ -163,6 +167,7 @@ const StepperPengajuan = () => {
                   disabled={!isKorbanTrue}
                   className='w-full'
                   onClick={isKorbanTrue ? nextStep : undefined}
+                  // onClick={nextStep}
                   label='Selanjutnya'
                 />
                 <Button
@@ -188,6 +193,7 @@ const StepperPengajuan = () => {
                   disabled={!isPelakuTrue || isLoading}
                   className='w-full'
                   onClick={
+                    // () => nextStep()
                     isPelakuTrue
                       ? () => {
                           handleSave(nextStep)

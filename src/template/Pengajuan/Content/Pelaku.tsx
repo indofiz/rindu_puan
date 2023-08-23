@@ -5,7 +5,10 @@ import ModalForm from '../ModalForm'
 import PelakuForm from './PelakuForm'
 import { useRecoilState, useResetRecoilState } from 'recoil'
 import {
+  Berkas,
   Pelaku as Pelku,
+  dataFilePelaku,
+  dataFileSementara,
   dataPelaku,
   dataSementaraPelaku
 } from '../../../recoil/pengajuan'
@@ -28,6 +31,11 @@ const Pelaku = () => {
 
   const [dataSementara, setDataSementara] = useRecoilState(dataSementaraPelaku)
 
+  const [listFile, setListFile] = useRecoilState(dataFilePelaku)
+
+  const [fileSementara, setFileSementara] = useRecoilState(dataFileSementara)
+
+  const resetDataFileSementara = useResetRecoilState(dataFileSementara)
   const resetDataSementara = useResetRecoilState(dataSementaraPelaku)
 
   useEffect(() => {
@@ -45,11 +53,16 @@ const Pelaku = () => {
     setDeleteIndex(null)
     setModalDelete(false)
   }
+
   const closeModal = () => {
+    resetDataSementara()
+    resetDataFileSementara()
     setModal(false)
   }
+
   const closeModalEdit = () => {
     resetDataSementara()
+    resetDataFileSementara()
     setModalEdit(false)
   }
 
@@ -61,7 +74,9 @@ const Pelaku = () => {
   const handleRemove = (index: number) => {
     if (deleteIndex !== null) {
       const newList = removeItemAtIndex(listDataPelaku, index)
+      const newFileList = removeItemAtIndex(listFile, index)
       setListDataPelaku(newList)
+      setListFile(newFileList)
     }
     setDeleteIndex(null)
   }
@@ -69,14 +84,23 @@ const Pelaku = () => {
   const onEdit = (index: number) => {
     setEditIndex(index)
     setDataSementara(listDataPelaku[index])
+    setFileSementara(listFile[index])
     setModalEdit(true)
   }
 
-  const onSave = () => {
-    setListDataPelaku((oldDataKorban: Pelku[]) => [
-      ...oldDataKorban,
-      dataSementara
+  const onSave = (uid: string) => {
+    setListDataPelaku((oldDataPelaku: Pelku[]) => [
+      ...oldDataPelaku,
+      { ...dataSementara, uid: uid }
     ])
+
+    if (Object.keys(fileSementara).length) {
+      setListFile((prev: Berkas[]) => [...prev, fileSementara])
+    } else {
+      setListFile((prev: Berkas[]) => [...prev, {}])
+    }
+
+    resetDataFileSementara()
     resetDataSementara()
   }
 
@@ -87,7 +111,16 @@ const Pelaku = () => {
         editIndex,
         dataSementara
       )
+
+      const newFile: Berkas[] = replaceItemAtIndex(
+        listFile,
+        editIndex,
+        fileSementara
+      )
+
+      setListFile(newFile)
       setListDataPelaku(newList)
+      resetDataFileSementara()
       resetDataSementara()
     }
     setEditIndex(null)
@@ -102,7 +135,7 @@ const Pelaku = () => {
               <ItemPelaku
                 item={item}
                 index={index}
-                key={item.nik}
+                key={index}
                 onRemove={onRemove}
                 onEdit={onEdit}
               />

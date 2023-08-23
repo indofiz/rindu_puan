@@ -1,0 +1,10 @@
+[
+  {
+    "id": "foto_ktp",
+    "type": "file_image",
+    "label": "Foto KTP:",
+    "placeholder": "Ambil Gambar",
+    "caption": "Maksimal 1 file",
+    "required": false
+  }
+]

@@ -15,7 +15,17 @@ const Input: FC<InputProps> = (props) => {
     props
   // HANDLE CHANGE
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const data = { target: { name: e.target.id, value: e.target.value } }
+    const value =
+      props.type == 'file'
+        ? e.target.files && e.target.files[0]
+        : e.target.value
+
+    const data = {
+      target: {
+        name: e.target.id,
+        value: value
+      }
+    }
     props.onChange(data)
   }
 

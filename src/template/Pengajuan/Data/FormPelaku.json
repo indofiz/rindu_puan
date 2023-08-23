@@ -78,5 +78,13 @@
     "label": "Hubungan dengan korban?",
     "placeholder": "contoh: Suami",
     "required": true
+  },
+  {
+    "id": "foto_ktp",
+    "type": "file_image",
+    "label": "Foto KTP:",
+    "placeholder": "Ambil Gambar",
+    "caption": "Maksimal 1 File, jika ingin merubah silahkan hapus dulu gambar, baru upload ulang",
+    "required": false
   }
 ]

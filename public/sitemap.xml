@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://siapbos.pangkalpinangkota.go.id</loc>
+        <loc>https://rindupuan.pangkalpinangkota.go.id</loc>
+    </url>
+    <url>
+        <loc>https://rindupuan.pangkalpinangkota.go.id/pengajuan/</loc>
+    </url>
+    <url>
+        <loc>https://rindupuan.pangkalpinangkota.go.id/faq/</loc>
+    </url>
+    <url>
+        <loc>https://rindupuan.pangkalpinangkota.go.id/pengajuan/</loc>
     </url>
     
 </urlset>

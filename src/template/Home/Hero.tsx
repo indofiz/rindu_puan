@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
           </div>
           <div className='mt-4 md:mt-0 order-last md:order-2 md:col-span-4 col-span-full w-full'>
             <Button
-              label='Ajukan Perlindungan'
+              label='Ajukan Pengaduan'
               to='/pengajuan'
               isLink
               variant='noBorder'

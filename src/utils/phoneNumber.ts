@@ -3,7 +3,7 @@ export const phoneNumber = (phone_number: string) => {
   const number_2_front = phone_number.slice(0, 2)
 
   if (number_2_front == '08') {
-    const nmbr = '62' + phone_number.slice(2)
+    const nmbr = '62' + phone_number.slice(1)
     return nmbr
   }
 

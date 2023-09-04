@@ -31,7 +31,7 @@ const AlurPengaduan = React.forwardRef<HTMLDivElement>((_, ref) => {
         <div className='flex flex-col gap-3 mt-6 md:mt-4 -mb-20 md:flex-row'>
           <List
             image={'/pengajuan/pengajuan.png'}
-            title='Ajukan Perlindungan'
+            title='Ajukan Pengaduan'
             desc='Mengisi formulir online untuk melakukan pengajuan perlindungan kekerasan kepada perempuan dan anak.'
           />
           <List

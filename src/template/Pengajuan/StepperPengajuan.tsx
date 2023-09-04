@@ -27,9 +27,11 @@ import { useState } from 'react'
 import Selesai from './Content/Selesai'
 import { useNavigate } from 'react-router-dom'
 import { jsonToFormData } from '../../utils/convertObjectToFormData'
+import LoadingModal, { IError } from './LoadingModal'
 
 const StepperPengajuan = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState<IError | null>(null)
 
   const isLaporanTrue = useRecoilValue(isLaporan)
 
@@ -79,6 +81,7 @@ const StepperPengajuan = () => {
   const handleSave = async (nextPage: () => void) => {
     const articleApiUrl = postPengajuanApiUrl()
     setIsLoading(true)
+    setIsError(null)
     try {
       const response = await axios.post<any>(
         articleApiUrl,
@@ -91,8 +94,12 @@ const StepperPengajuan = () => {
       }
     } catch (error: any) {
       setStatusPengajuan('error')
-      setIsLoading(false)
-
+      if (error.response.status == 422) {
+        setIsError(error.response.data)
+      } else {
+        setIsError(null)
+        setIsLoading(false)
+      }
       throw error.message
     }
   }
@@ -125,6 +132,12 @@ const StepperPengajuan = () => {
 
   return (
     <div className='mx-auto md:container md:max-w-lg md:mt-24'>
+      <LoadingModal
+        title={isError ? 'Terdapat Error' : 'Sedang Mengupload...'}
+        isOpen={isLoading}
+        isError={isError}
+        closeModal={() => setIsLoading(false)}
+      />
       <Stepper steps={steps} initialStep='laporan'>
         {(prevStep, nextStep, CurrentStep, steps) => (
           <>

@@ -39,6 +39,9 @@ export const dataLaporan = atom({
   key: 'dataLaporan',
   default: {
     nama_lengkap: '',
+    email: '',
+    is_pangkalpinang: '',
+    no_hp: '',
     tanggal_kejadian: '',
     latitude: '',
     longitude: '',

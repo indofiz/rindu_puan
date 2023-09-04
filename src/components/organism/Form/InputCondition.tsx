@@ -158,6 +158,7 @@ const InputCondition: FC<ConditionProps> = (props) => {
         onChange={onChange}
         handleError={handleError}
         value={data}
+        errorMessage={errorMessage}
         onDelete={props.onDeleteFile}
         file={props.file}
       />

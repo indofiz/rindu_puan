@@ -22,7 +22,7 @@ const Info = () => {
           </p>
           <div className='mt-2 md:mt-4'>
             <Button
-              label='Ajukan Perlindungan'
+              label='Ajukan Pengaduan'
               to='/pengajuan'
               isLink
               variant='noBorder'

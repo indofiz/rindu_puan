@@ -31,8 +31,36 @@ const InputImage: FC<FileInputProps> = ({
   const handleChange = (param: dataChange) => {
     // CHECK FORMAT IMAGE
     const val = param.target.value
+    let msg: any[] = []
     if (val) {
-      props.onChange(param)
+      const size = val instanceof File ? val.size : null
+      const type = val instanceof File ? val.type : null
+      const name = val instanceof File ? val.name : null
+
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg']
+      const allowedExt = ['jpg', 'png', 'jpeg']
+
+      const isOverMax = Boolean(size && size > 9 * 1000 * 1024)
+      const isTypeTrue = Boolean(type && allowedTypes.includes(type))
+      const isNameHasExt = Boolean(name && name?.split('.').length)
+      const isExtentionTrue = Boolean(
+        isNameHasExt &&
+          name &&
+          allowedExt.includes(name?.split('.').slice(-1)[0])
+      )
+
+      if (isOverMax) {
+        msg = [{ id: '1', message: 'File Tidak boleh lebih dari 9MB' }]
+      }
+      if (!isTypeTrue || !isExtentionTrue) {
+        msg = [{ id: '2', message: 'Hanya JPEG,PNG,JPG yang diperbolehkan' }]
+      }
+      if (isTypeTrue && !isOverMax && isExtentionTrue) {
+        msg = []
+        props.onChange(param)
+      }
+
+      props.handleError?.({ target: { name: id, value: msg } })
     }
   }
 
@@ -78,7 +106,7 @@ const InputImage: FC<FileInputProps> = ({
         {errorMessage &&
           errorMessage.map(
             (mes: { id: string; message: string; state: any }) => (
-              <Message key={mes.id} state={mes.state} message={mes.message} />
+              <Message key={mes.id} state={'danger'} message={mes.message} />
             )
           )}
       </div>

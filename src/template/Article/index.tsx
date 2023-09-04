@@ -20,7 +20,7 @@ const ArticleDetail: React.FC<ArticleProps> = ({ item }) => {
           <span className='text-gray-500'>Published {tanggal.toString()}</span>
         </div>
         <h2 className='max-w-2xl mx-auto text-center text-2xl md:text-4xl font-semibold text-gray-800'>
-          {item.judul} fewaf fewaf feawf few
+          {item.judul}
         </h2>
         <div className='mt-8 md:mt-12 max-w-lg mx-auto'>
           <div className='w-full max-h-96 flex justify-center overflow-hidden'>

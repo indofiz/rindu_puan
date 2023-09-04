@@ -16,7 +16,6 @@ const KorbanForm: FC<KorbanFormProps> = ({ closeModal, onSave, form }) => {
   const { data, dataError, handleChange, handleError } = metaDataKorban()
 
   const { handleChangeFile, handleDeleteFile, file } = metaDataFile()
-
   const isRequired = requiredCheck(data, form)
 
   const handleSave = () => {

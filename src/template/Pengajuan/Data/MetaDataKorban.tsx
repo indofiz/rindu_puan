@@ -14,7 +14,6 @@ const metaDataKorban = () => {
   }
 
   const handleError = (param: dataError) => {
-    console.log(param)
     setDataError({ ...dataError, [param.target.name]: param.target.value })
   }
 
